@@ -6,7 +6,7 @@ if [ ! -f "/app/web/galleries/index.php" ]; then
  echo "galleries文件夹创建成功"
 else
  echo "galleries文件夹存在"
- chown -R www:www /app/web
+ chown -R www-data:www-data /app/web
  chmod 777 /app/web
 fi
 
@@ -19,7 +19,7 @@ if [ ! -f "/app/web/local/index.php" ]; then
  echo "local文件夹创建成功"
 else
  echo "local文件夹存在"
- chown -R www:www /app/web
+ chown -R www-data:www-data /app/web
  chmod 777 /app/web
 fi
 
@@ -33,7 +33,7 @@ if [ ! -f "/app/web/plugins/index.php" ]; then
  echo "plugins文件夹创建成功"
 else
  echo "plugins文件夹存在"
- chown -R www:www /app/web
+ chown -R www-data:www-data /app/web
  chmod 777 /app/web
 fi
 
@@ -47,12 +47,12 @@ if [ ! -f "/app/web/themes/index.php" ]; then
  echo "themes文件夹创建成功"
 else
  echo "themes文件夹存在"
- chown -R www:www /app/web
+ chown -R www-data:www-data /app/web
  chmod 777 /app/web
 fi
 
 echo -e "\033[36m设置权限中... \033[0m"
-chown -R www:www /app/web
+chown -R www-data:www-data /app/web
 chmod 777 /app/web
 
 echo -e "\033[36m启动 \033[0m"
