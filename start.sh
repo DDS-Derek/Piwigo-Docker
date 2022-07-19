@@ -56,9 +56,4 @@ chown -R www:www /app/web
 chmod 777 /app/web
 
 echo -e "\033[36m启动 \033[0m"
-/usr/local/php/sbin/php-fpm
-#/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
-/usr/local/nginx/sbin/nginx
-#tail -f /start.sh
-#tail -f /usr/local/php/var/log/php-fpm.log
-tail -f /var/log/nginx/error.log;
+exec /usr/bin/supervisord -n -c /etc/supervisord.conf
