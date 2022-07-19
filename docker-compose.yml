@@ -23,4 +23,4 @@ services:
       ports:
           - "8087:80"
       links:
-          - mysqlpiwigo:mysql
+          - mysqlpiwigo:db

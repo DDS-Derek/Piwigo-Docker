@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ ! -f "/app/web/galleries/index.php" ]; then
- echo -e "\033[36m galleries文件夹不存在,正在创建... \033[0m"
+ echo -e "\033[36mgalleries文件夹不存在,正在创建... \033[0m"
  mv /web/galleries/index.php /app/web/galleries
  echo "galleries文件夹创建成功"
 else
@@ -11,7 +11,7 @@ else
 fi
 
 if [ ! -f "/app/web/local/index.php" ]; then
- echo -e "\033[36m local文件夹不存在,正在创建... \033[0m"
+ echo -e "\033[36mlocal文件夹不存在,正在创建... \033[0m"
  mv /web/local/config /app/web/local
  mv /web/local/css /app/web/local
  mv /web/local/language /app/web/local
@@ -24,7 +24,7 @@ else
 fi
 
 if [ ! -f "/app/web/plugins/index.php" ]; then
- echo -e "\033[36m plugins文件夹不存在,正在创建... \033[0m"
+ echo -e "\033[36mplugins文件夹不存在,正在创建... \033[0m"
  mv /web/plugins/AdminTools /app/web/plugins
  mv /web/plugins/language_switch /app/web/plugins
  mv /web/plugins/LocalFilesEditor /app/web/plugins
@@ -38,7 +38,7 @@ else
 fi
 
 if [ ! -f "/app/web/themes/index.php" ]; then
- echo -e "\033[36m themes文件夹不存在,正在创建... \033[0m"
+ echo -e "\033[36mthemes文件夹不存在,正在创建... \033[0m"
  mv /web/themes/default /app/web/themes
  mv /web/themes/elegant /app/web/themes
  mv /web/themes/modus /app/web/themes
@@ -51,15 +51,14 @@ else
  chmod 777 /app/web
 fi
 
-echo "设置权限中..."
+echo -e "\033[36m设置权限中... \033[0m"
 chown -R www:www /app/web
 chmod 777 /app/web
 
-echo "启动/start"
+echo -e "\033[36m启动 \033[0m"
 /usr/local/php/sbin/php-fpm
 #/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 /usr/local/nginx/sbin/nginx
-
 #tail -f /start.sh
 #tail -f /usr/local/php/var/log/php-fpm.log
 tail -f /var/log/nginx/error.log;
