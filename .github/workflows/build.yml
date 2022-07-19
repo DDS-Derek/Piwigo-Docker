@@ -37,7 +37,8 @@ jobs:
 
           push: true
           tags: |
-            ddsderek/piwigo:${{ steps.prepare.outputs.version }}
+            ddsderek/piwigo:${{ github.ref }}
+            
       - 
         name: Buildx
         uses: docker/build-push-action@v3
