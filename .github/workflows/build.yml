@@ -37,7 +37,7 @@ jobs:
 
           push: true
           tags: |
-            ddsderek/piwigo:${{ steps.prepare.outputs.version }}
+            ddsderek/piwigo:${{ github.ref }}
 
       - 
         name: Buildx
