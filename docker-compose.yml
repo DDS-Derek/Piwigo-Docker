@@ -22,5 +22,9 @@ services:
           - ./upload:/app/web/upload
       ports:
           - "8087:80"
+      environment:
+          - TZ=Asia/Shanghai
+          - PUID=1000
+          - PGID=1000
       links:
-          - mysqlpiwigo:db
+          - mysqlpiwigo:mysql
