@@ -6,7 +6,7 @@ ADD ./shell /shell
 
 WORKDIR /
 
-RUN wget https://cn.piwigo.org/download/dlcounter.php?code=${TAG} -O piwigo.zip && \
+RUN wget --no-check-certificate https://cn.piwigo.org/download/dlcounter.php?code=${TAG} -O piwigo.zip && \
     unzip piwigo.zip && \
     mv /piwigo /web && \
     cp -r /web /app && \
