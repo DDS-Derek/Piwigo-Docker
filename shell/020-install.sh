@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
+# 创建配置文件
 if [ ! -f "/app/web/galleries/index.php" ]; then
  echo -e "\033[36mgalleries文件夹不存在,正在创建... \033[0m"
  mv /web/galleries/index.php /app/web/galleries
@@ -50,10 +51,3 @@ else
  chown -R www-data:www-data /app/web
  chmod 777 /app/web
 fi
-
-echo -e "\033[36m设置权限中... \033[0m"
-chown -R www-data:www-data /app/web
-chmod 777 /app/web
-
-echo -e "\033[36m启动 \033[0m"
-exec /usr/bin/supervisord -n -c /etc/supervisord.conf
