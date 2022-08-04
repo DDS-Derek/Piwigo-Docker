@@ -1,1 +1,34 @@
 # piwigo
+```
+version: '3.3'
+services:
+    mysqlpiwigo:
+      container_name: piwigo-db
+      image: mariadb:10.5
+      volumes:
+          - ./mysql/:/var/lib/mysql
+      environment:
+          - MYSQL_ROOT_PASSWORD=piwigo
+          - MYSQL_DATABASE=piwigo
+          - MYSQL_USER=piwigo
+          - MYSQL_PASSWORD=piwigo
+    piwigo:
+      container_name: piwigo
+      image: ddsderek/piwigo:latest
+      volumes:
+          - ./data/galleries:/app/web/galleries
+          - ./data/local:/app/web/local
+          - ./data/plugins:/app/web/plugins
+          - ./data/themes:/app/web/themes
+          - ./cache:/app/web/_data/i
+          - ./upload:/app/web/upload
+      ports:
+          - "8087:80"
+      environment:
+          - TZ=Asia/Shanghai
+          - PUID=1000
+          - PGID=1000
+      links:
+          - mysqlpiwigo:mysql
+```
+DockerHub：https://hub.docker.com/r/ddsderek/piwigo
