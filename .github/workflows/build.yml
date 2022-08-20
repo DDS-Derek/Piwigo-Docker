@@ -1,7 +1,8 @@
 name: piwigo镜像制作
 
 on:
-  workflow_dispatch:
+    release:
+        types: [published]
 
 jobs:
   push:
@@ -11,6 +12,12 @@ jobs:
         name: Checkout
         uses: actions/checkout@master
       
+      - name: Set Version
+        id: set-version
+        run: |
+          echo "::set-output name=version::${GITHUB_REF:10}"
+          echo "ReleaseTag=${GITHUB_REF:10}"
+
       - 
         name: Set Up QEMU
         uses: docker/setup-qemu-action@v2
@@ -39,21 +46,8 @@ jobs:
             linux/ppc64le
             linux/s390x
           push: true
+          build-args: |
+            VERSION=${{ steps.set-version.outputs.version }}
           tags: |
-            ddsderek/piwigo:${{ secrets.VERSION }}
-
-      - 
-        name: Buildx
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: Dockerfile
-          platforms: |
-            linux/amd64
-            linux/arm/v7
-            linux/arm64/v8
-            linux/ppc64le
-            linux/s390x
-          push: true
-          tags: |
-            ddsderek/piwigo:latest
+            ${{ secrets.DOCKER_USERNAME }}/piwigo:${{ steps.set-version.outputs.version }}
+            ${{ secrets.DOCKER_USERNAME }}/piwigo:latest
